@@ -1,0 +1,19 @@
+<ion-menu [content]="content" enabled="false" id="te">
+  <ion-header>
+    <ion-toolbar color="roxo">
+      <ion-title>Menu   <ion-icon name="ios-options"></ion-icon></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="no-scroll">
+    <ion-list>
+      <button menuClose ion-item (click)="openPage()">
+        Calendário <ion-icon name="md-calendar"></ion-icon>
+      </button>
+      <button menuClose ion-item (click)="logout()">
+        Sair {{token}}<ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

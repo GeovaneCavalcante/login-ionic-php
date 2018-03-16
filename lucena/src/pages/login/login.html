@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="roxo">
+    <button ion-button menuToggle  padding-right>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center> LUCENA <ion-icon name="bus"></ion-icon></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-title text-center> Login <ion-icon name="ios-person"></ion-icon></ion-title>
+  </div>
+  <br>
+  <ngx-loading [show]="loading" ></ngx-loading>
+  <div *ngIf="validade" padding style="color: red">
+    Dados errados, digite usuário e a senha corretamente!
+  </div>
+  <form #form="ngForm" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-input autocapitalize="none" type="text" #usuario="ngModel" required minlength="5" name="username" ngModel  placeholder="Usuário"></ion-input>
+      </ion-item>
+      <div *ngIf="!usuario.valid && usuario.touched"  padding style="color: red">
+        Campo é obrigatório
+      </div>
+      <br>
+      <ion-item>
+        <ion-input type="password" #pass="ngModel" required minlength="5" name="pass" ngModel placeholder="Senha"></ion-input>
+      </ion-item>
+      <div *ngIf="!pass.valid && (pass.touched)" padding style="color: red">
+        Campo é obrigatório
+      </div>
+    </ion-list>
+  </form>
+
+  <div padding align-items-center>
+    <button full align-items-center [disabled]="!form.valid" ion-button color="primary" (click)="login({'user': usuario.valueOf().value, 'pass': pass.valueOf().value})">entrar</button>
+  </div>
+
+
+</ion-content>
